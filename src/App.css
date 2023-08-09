@@ -1,38 +1,189 @@
-.App {
-  text-align: center;
+.App{
+   
+    height: 100vh;
+   
+}
+.layout_wrap{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.header_wrap{
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.layout_wrap_project{
+    display: flex;
+    margin-left: 20px;
+    height: calc(100vh - 60px);
+}
+.project_side_menu_wrap{
+    width: 100px;
+    border-right : 1px solid rgba(5, 5, 5, 0.06)
+}
+.ant-menu-light.ant-menu-root.ant-menu-vertical{
+    border: none;
+}
+.project_wrap{
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 登录样式 */
+.login_wrap{
+    width: 100%;
+    height: 100%;
+}
+.css-Jira{
+    width: 100%;
+    height: 100px;
+    /* padding: 5rem 0px; */
+    /* box-sizing: border-box; */
+    background: url(../public/Jira.svg) center center / 5rem no-repeat;
+}
+.bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left bottom, right bottom;
+    background-size: calc(((100vw - 40rem) / 2) - 3.2rem), calc(((100vw - 40rem) / 2) - 3.2rem), cover;
+    background-image: url(../public/bg-left.svg), url(../public/bg-left.svg);
+}
+.login_box_wrap{
+    position: absolute;
+    left: 50%;
+    transform:translateX(-50%) ;
+    text-align: center;
+}
+.ant-card{
+    padding: 3.2rem 4rem;
+    height: 560px;
+}
+.ant-card .ant-card-body{
+    padding: 0;
+}
+.ant-input{
+    border-radius: 0;
+}
+h2{
+    color: #72798b;
+    font-weight: 500;
+}
+.anticon svg {
+    display: none;
+}
+.ant-input-affix-wrapper{
+    border-radius: 0;
+    background-color: rgb(232, 240, 254);
+}
+.ant-btn-primary{
+    width: 100%;
+    border-radius: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* 通用头部样式 */
+
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.left a{
+    display: block;
+    width: 200px;
+    height: 30px;
+    background: url(../public/Jira.svg)   no-repeat;
+}
+.left_project,.left_menber{
+    color: inherit;
+    cursor: pointer;
+}
+.left_menber{
+    margin-left: 20px;
+}
+ .project_content{
+    width: 300px;
+}
+.content_menber{
+    width: 300px;
+}
+.content_menber .ant-divider-horizontal {
+    margin: 10px;
+}
+.content_menber h3{
+    font-weight: 500;
+}
+.right {
+    line-height: 60px;
+}
+.right>* {
+    margin-right: 10px;
+    text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* 项目样式 */
+._project_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+._project_header h1{
+    font-weight: 500;
+}
+._project_search{
+    width: 400px;
+
+
+}
+._project_search .ant-input{
+    width: 200px;
+    margin-right: 10px;
+}
+.ant-select-single .ant-select-selector{
+    border-radius: 0;
 }
 
-.App-link {
-  color: #61dafb;
+
+.ant-modal .ant-btn-primary{
+    width: auto;
+}
+.ant-btn{
+    border-radius: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.ant-menu-item{
+    margin: 0;
+    padding: 0;
+}
+
+.ant-menu-light .ant-menu-item-selected{
+    background: none;
+}
+.ant-menu-light .ant-menu-item:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected):hover{
+    background:none ;
+}
+
+
+.project_wrap h1{
+    font-weight: 500;
+}
+.kanban_search{
+    margin-bottom: 20px;
+}
+.kanban_search > *{
+    margin-right: 20px;
+}
+.kanban_search .ant-input{
+    width: 200px;
 }
