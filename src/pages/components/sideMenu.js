@@ -1,13 +1,15 @@
 import { Menu } from 'antd';
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
+
 export default () => {
+  const params = useParams();
   const items = [
     {
-    label: (<Link to="project/1/kanban">看板</Link>),
+    label: (<Link to={`project/${params.id}/kanban`}>看板</Link>),
     key: "kanban"
   },
   {
-    label: (<Link to="project/1/epic">任务组</Link>),
+    label: (<Link to={`project/${params.id}/epic`}>任务组</Link>),
     key: "task" 
   }
 ]

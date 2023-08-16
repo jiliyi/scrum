@@ -1,11 +1,32 @@
 import LoginWrap from "./components/login_wrap"
 import { Card, Button, Form, Input, Divider } from 'antd';
-import { Link } from "react-router-dom";
-
+import axios from "../util/http";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { set_login } from "../redux/slice/login";
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const [form] = Form.useForm();
+    const login_click = async ()=>{
+        let data;
+        try {
+           data =  await form.validateFields()
+        } catch (error) {
+            console.log(error)
+        }
+        if(data){
+           const response =  await axios.post('api/login',data);
+           if(response.data.code === 0){
+            dispatch(set_login(true))
+            navigate('/project')
+           }
+        }
+         
+    }
     return (
-        <Form>
+        <Form form={form}>
             <Form.Item
 
                 name="username"
@@ -30,7 +51,7 @@ const Login = () => {
             >
                 <Input.Password />
             </Form.Item>
-            <Button type="primary" htmlType="submit">登录</Button>
+            <Button type="primary" onClick={login_click} htmlType="submit">登录</Button>
         </Form>
     )
 }

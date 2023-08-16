@@ -1,7 +1,13 @@
 import { Button, Divider, Popover, Dropdown, Space } from "antd"
-import { Link } from "react-router-dom"
+import axios from "../../../util/http";
+import { Link, useNavigate } from "react-router-dom"
 
 export default () => {
+    const navigate =  useNavigate()
+    const logout = async()=>{
+        await axios.post('/api/logout');
+        navigate('/login')
+    }
     const content = (
         <div className="project_content">
           <h3 style={{color:"#ccc"}}>收藏项目</h3>
@@ -37,7 +43,12 @@ export default () => {
             </div>
             <div className="right">
                 <span>你好，123</span>
-                <Link>登出</Link>
+                <Button
+                onClick={logout}
+                style={{
+                    width : 'auto'
+                }} 
+                type="primary">登出</Button>
             </div>
         </>
     )

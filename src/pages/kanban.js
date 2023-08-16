@@ -1,45 +1,37 @@
-import { Button, Input, Select } from "antd"
+import Drag from './components/drag';
+import { useDispatch } from 'react-redux'
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
+import { getProjectAsync } from "../redux/slice/project";
+import { set_project_id } from "../redux/slice/drop";
+import CreateTaskModal from './components/create_task_modal' 
+import SearchForm from './components/search_form';
 export default () => {
+  const params = useParams();
+  const projectId = params.id;
+  const dispatch = useDispatch();
+
+  
+  useEffect(() => {
+
+    
+    dispatch(getProjectAsync(projectId));
+    dispatch(set_project_id(projectId))
+
+  }, [projectId])
   return (
     <>
       <h1 className="kanban_title">快递管理看板</h1>
       <div className="kanban_search">
-        <Input placeholder="任务名" />
-        <Select
-          style={{
-            width: 120,
-          }}
-          defaultValue="jack"
-          options={[
-            {
-              value: 'jack',
-              label: 'Jack',
-            },
-            {
-              value: 'jhon',
-              label: 'jhon',
-            }
-          ]
-          }></Select>
-        <Select
-          style={{
-            width: 120,
-          }}
-          defaultValue="jack"
-          options={[
-            {
-              value: 'jack',
-              label: 'Jack',
-            },
-            {
-              value: 'jhon',
-              label: 'jhon',
-            }
-          ]
-          }></Select>
-        <Button >清除筛选器</Button>
+        <SearchForm />
       </div>
+      <div className="kanban_content">
+        <Drag>
+
+        </Drag>
+      </div>
+          <CreateTaskModal />
     </>
   )
 }

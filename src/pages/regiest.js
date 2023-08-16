@@ -1,11 +1,28 @@
 import LoginWrap from "./components/login_wrap"
 import { Card, Button, Form, Input, Divider } from 'antd';
+import axios from "../util/http";
 import { Link } from "react-router-dom";
 
 
 const Login = () => {
+    const [form] = Form.useForm();
+    const regiest_click = async ()=>{
+        let form_data;
+        try {
+            form_data =  await form.validateFields();
+        } catch (error) {
+            console.log(error)
+        }
+        
+
+        if(form_data){
+           const res =  await  axios.post('/api/register',form_data);
+           console.log(res)
+        }
+    }
+    
     return (
-        <Form>
+        <Form form={form}>
             <Form.Item
 
                 name="username"
@@ -30,7 +47,7 @@ const Login = () => {
             >
                 <Input.Password />
             </Form.Item>
-            <Button type="primary" htmlType="submit">注册</Button>
+            <Button onClick={regiest_click} type="primary" htmlType="submit">注册</Button>
         </Form>
     )
 }
